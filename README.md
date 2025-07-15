@@ -1,4 +1,4 @@
-# projeto-3
+# projeto-3 - GRUPO 13
 Projeto número 3 - Curso de Desenvolvimento de software - Koru - Grupo oboticario 
 
 # Instruções:
