@@ -206,7 +206,61 @@ const students = [
     { name: "Ana", age: 18, grades: [60, 75, 68] },
     { name: "Carlos", age: 22, grades: [90, 88, 92] }
 ];
-```
+//a) Para cada aluno, calcule a média das notas
+function calculateAverage(grades) {
+    const sum = grades.reduce((total, grade) => total + grade, 0);
+    return sum / grades.length;
+}
+
+let approvedCount = 0;
+let failedCount = 0;
+let totalAverage = 0;
+
+let topStudent = null;
+let highestAverage = 0;
+
+students.forEach(student => {
+    student.average = calculateAverage(student.grades);
+
+//b) Determine se cada aluno foi aprovado ou reprovado (média >= 70 para aprovar)
+
+student.status = student.average >= 70 ? "Aprovado": "Reprovado";
+
+//c) Conte quantos alunos foram aprovados e quantos foram reprovados
+
+if (student.status === "Aprovado") {
+        approvedCount++;
+    } else {
+        failedCount++;
+    }
+//d) Encontre o aluno com a maior média
+if (student.average > highestAverage) {
+        highestAverage = student.average;
+        topStudent = student;
+    }
+
+// e) Calcule a média geral da turma
+
+totalAverage += student.average;
+});
+
+// e) Calcular a média geral da turma
+const classAverage = totalAverage / students.length;
+
+/ Exibindo os resultados
+console.log("Resultados dos Alunos:");
+students.forEach(student => {
+    console.log(`Nome: ${student.name}, Média: ${student.average.toFixed(2)}, Status: ${student.status}`);
+});
+
+console.log("\nQuantidade de Aprovados:", approvedCount);
+console.log("Quantidade de Reprovados:", failedCount);
+
+console.log("\nAluno com a maior média:");
+console.log(`Nome: ${topStudent.name}, Média: ${topStudent.average.toFixed(2)}`);
+
+console.log("\nMédia geral da turma:", classAverage.toFixed(2));
+
 
 #### Desafios
 a) Para cada aluno, calcule a média das notas
